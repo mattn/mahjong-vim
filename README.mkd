@@ -21,6 +21,8 @@ run
 
     :Mahjong
 
+	You can choise discard item with h/l. And <space> to discard, <enter>/x to judgement, and <esc>/q to quit.
+
 rule
 ----
 
