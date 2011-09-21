@@ -132,9 +132,9 @@ function! s:mahjong()
   syn match MahjongBlock /[┌─┬┐│└┴┘]/
   syn match MahjongUnit '萬'
   syn match MahjongNumber /[一二三四五六七八九]/
-  hi MahjongBlock ctermfg=green ctermbg=none guifg=green guibg=none
-  hi MahjongUnit ctermfg=red ctermbg=none guifg=red guibg=none
-  hi MahjongNumber ctermfg=white ctermbg=none guifg=white guibg=none
+  hi MahjongBlock ctermfg=green ctermbg=NONE guifg=green guibg=NONE
+  hi MahjongUnit ctermfg=red ctermbg=NONE guifg=red guibg=NONE
+  hi MahjongNumber ctermfg=white ctermbg=NONE guifg=white guibg=NONE
 
   let mountain = [4,4,4,4,4,4,4,4,4]
   let hai = []
