@@ -149,7 +149,7 @@ function! s:mahjong()
     call s:display(mountain, hai, t, x)
     redraw
     let c = nr2char(getchar())
-    if c == 'q'
+    if c == 'q' || c == "\x1b"
       bdelete
       break
 	elseif c == 'h'
