@@ -176,7 +176,7 @@ function! s:mahjong()
       endif
       let r += 1
       let x = 13
-    elseif c == 'x' || c == "\n"
+    elseif c == 'x' || c == "\r"
       call add(hai, t)
       let hai = sort(hai)
       call s:judge(hai, r)
