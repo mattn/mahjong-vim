@@ -61,7 +61,11 @@ function! s:judge(chai, c)
   endif
   echohl Title | echomsg "YOU WIN IN ".(a:c).(a:c == 1 ? "ST TIME!!" : "TH TIMES!!") | echohl None
   echohl MahjongBlock
-  echo "┌─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┐\n"
+  if &ambiwidth == 'double'
+    echo "┌─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┐\n"
+  else
+    echo "┌──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┐\n"
+  endif
   for h in ret.mentu + [ret.atama, ret.atama]
     echohl MahjongBlock
     echon "│"
@@ -78,7 +82,11 @@ function! s:judge(chai, c)
   endfor
   echohl MahjongBlock
   echon "│\n"
-  echo "└─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┘"
+  if &ambiwidth == 'double'
+    echo "└─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┘"
+  else
+    echo "└──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┘"
+  endif
   echohl None
 endfunction
 
@@ -99,11 +107,19 @@ function! s:display(mountain, hai, tsumo, x)
   endfor
   let o .= "││".s:hai[a:tsumo]."│"
   silent %d
-  call setline(1, "┌─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┐┌─┐")
-  call setline(2, o)
-  call setline(3, "│萬│萬│萬│萬│萬│萬│萬│萬│萬│萬│萬│萬│萬││萬│")
-  call setline(4, "└─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┘└─┘")
-  call setline(5, repeat(' ', a:x * 4 + (a:x == 13 ? 4 : 2)).'＾')
+  if &ambiwidth == 'double'
+    call setline(1, "┌─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┐┌─┐")
+    call setline(2, o)
+    call setline(3, "│萬│萬│萬│萬│萬│萬│萬│萬│萬│萬│萬│萬│萬││萬│")
+    call setline(4, "└─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┘└─┘")
+    call setline(5, repeat(' ', a:x * 4 + (a:x == 13 ? 4 : 2)).'＾')
+  else
+    call setline(1, "┌──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┐┌──┐")
+    call setline(2, o)
+    call setline(3, "│萬│萬│萬│萬│萬│萬│萬│萬│萬│萬│萬│萬│萬││萬│")
+    call setline(4, "└──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┘└──┘")
+    call setline(5, repeat(' ', a:x * 3 + (a:x == 13 ? 2 : 1)).'＾')
+  endif
   call setline(6, " h/l: move, <space>: discard, <enter>/x: judge, <esc>/q: quit")
 endfunction
 
