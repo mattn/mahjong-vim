@@ -27,6 +27,11 @@ rule
   This is mahjong game. But WANZU is only existing in tiles.
   You must finish to make CHINITU.
 
+screenshot
+----------
+
+![screenshot](http://go-gyazo.appspot.com/1e8628e68c558c67.png)
+
 author
 ------
 
