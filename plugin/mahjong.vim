@@ -60,10 +60,26 @@ function! s:judge(chai, c)
     return
   endif
   echohl Title | echomsg "YOU WIN IN ".(a:c).(a:c == 1 ? "ST TIME!!" : "TH TIMES!!") | echohl None
-  echo "┌─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┐"
-  echo "│".join(map(ret.mentu, "s:hai[v:val]"), "│")."│".s:hai[ret.atama]."│".s:hai[ret.atama]."│"
-  echo "│萬│萬│萬│萬│萬│萬│萬│萬│萬│萬│萬│萬│萬│萬│"
+  echohl MahjongBlock
+  echo "┌─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┐\n"
+  for h in ret.mentu + [ret.atama, ret.atama]
+    echohl MahjongBlock
+    echon "│"
+    echohl MahjongNumber
+    echon s:hai[h]
+  endfor
+  echohl MahjongBlock
+  echon "│\n"
+  for h in repeat(["萬"], 14)
+    echohl MahjongBlock
+    echon "│"
+    echohl MahjongUnit
+    echon h
+  endfor
+  echohl MahjongBlock
+  echon "│\n"
   echo "└─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┘"
+  echohl None
 endfunction
 
 let s:rand_num = 1
@@ -152,7 +168,7 @@ function! s:mahjong()
     if c == 'q' || c == "\x1b"
       bdelete
       break
-	elseif c == 'h'
+    elseif c == 'h'
       if x > 0
         let x -= 1
       endif
