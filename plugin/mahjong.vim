@@ -105,7 +105,7 @@ function! s:display(mountain, hai, tsumo, x)
   call setline(3, "│萬│萬│萬│萬│萬│萬│萬│萬│萬│萬│萬│萬│萬││萬│")
   call setline(4, "└─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┘└─┘")
   call setline(5, repeat(' ', a:x * 4 + (a:x == 13 ? 4 : 2)).'＾')
-  call setline(6, " h/l: move, <space>: discard, <enter>/x: judge")
+  call setline(6, " h/l: move, <space>: discard, <enter>/x: judge, <esc>/q: quit")
 endfunction
 
 function! s:tsumo(mountain)
