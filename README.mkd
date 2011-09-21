@@ -1,0 +1,35 @@
+mahjong-vim
+===========
+
+This is mahjong game in vimscript.
+
+install
+-------
+
+  If you use pathogen.vim, you should do following.
+
+    # cd /path/to/your/dotvim/bundle
+	# git clone https://github.com/mattn/mahjong-vim
+
+  If you don't use pathogen.vim
+
+    # cd /path/to/your/dotvim/plugin
+	# cp /path/to/downloaded/mahjong.vim .
+
+run
+---
+
+    :Mahjong
+
+rule
+----
+
+  This is mahjong game. But WANZU is only existing in tiles.
+  You must finish to make CHINITU.
+
+author
+------
+
+  Yasuhiro Matsumoto <mattn.jp@gmail.com>
+
+
