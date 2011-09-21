@@ -82,15 +82,14 @@ function! s:judge(chai, c)
   echohl None
 endfunction
 
-let s:rand_num = 1
+let s:seed = 0
+function! s:srand(seed)
+  let s:seed = a:seed
+endfunction
+
 function! s:rand()
-  if has('reltime')
-    let match_end = matchend(reltimestr(reltime()), '\d\+\.') + 1
-    return reltimestr(reltime())[l:match_end : ]
-  else
-    let s:rand_num += 1
-    return s:rand_num
-  endif
+  let s:seed = s:seed * 214013 + 2531011
+  return (s:seed < 0 ? s:seed - 0x80000000 : s:seed) / 0x10000 % 0x8000
 endfunction
 
 function! s:display(mountain, hai, tsumo, x)
@@ -152,6 +151,7 @@ function! s:mahjong()
   hi MahjongUnit ctermfg=red ctermbg=NONE guifg=red guibg=NONE
   hi MahjongNumber ctermfg=white ctermbg=NONE guifg=white guibg=NONE
 
+  call s:srand(localtime())
   let mountain = [4,4,4,4,4,4,4,4,4]
   let hai = []
   for _ in range(13)
