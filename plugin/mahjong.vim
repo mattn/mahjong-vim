@@ -36,8 +36,8 @@ endfunction
 
 function! s:judge1(hai)
   let ctx = {"hai": a:hai, "mentu": [], "atama": -1}
-  for n in range(len(ctx.hai))
-    if ctx.hai[n] >= 2
+  for n in range(len(a:hai))
+    if a:hai[n] >= 2
       let ctx = {"hai": deepcopy(a:hai), "mentu": [], "atama": n}
       let ctx.hai[n] -= 2
       if s:judge2(ctx)
