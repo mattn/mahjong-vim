@@ -61,7 +61,7 @@ function! s:judge(chai, c)
   endif
   echohl Title | echomsg "YOU WIN IN ".(a:c).(a:c == 1 ? "ST TIME!!" : "TH TIMES!!") | echohl None
   echohl MahjongBlock
-  if &ambiwidth == 'double'
+  if &ambiwidth == 'double' || has('win32') || has('win64')
     echo "┌─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┐\n"
   else
     echo "┌──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┐\n"
@@ -82,7 +82,7 @@ function! s:judge(chai, c)
   endfor
   echohl MahjongBlock
   echon "│\n"
-  if &ambiwidth == 'double'
+  if &ambiwidth == 'double' || has('win32') || has('win64')
     echo "└─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┘"
   else
     echo "└──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┘"
@@ -107,7 +107,7 @@ function! s:display(mountain, hai, tsumo, x)
   endfor
   let o .= "││".s:hai[a:tsumo]."│"
   silent %d
-  if &ambiwidth == 'double'
+  if &ambiwidth == 'double' || has('win32') || has('win64')
     call setline(1, "┌─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┐┌─┐")
     call setline(2, o)
     call setline(3, "│萬│萬│萬│萬│萬│萬│萬│萬│萬│萬│萬│萬│萬││萬│")
